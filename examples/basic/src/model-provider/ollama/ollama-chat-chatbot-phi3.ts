@@ -12,19 +12,21 @@ async function main() {
   const chat: ChatPrompt = { system: systemPrompt, messages: [] };
 
   while (true) {
-    const userInput = await terminal.question("You: ");
+    let userInput = await terminal.question("You: ");
 
     chat.messages.push({ role: "user", content: userInput });
 
-    // The advanced version that calls the Prompt consruction code
+    // Phi3 we have to explicitly set the stop option value as otherwise doesn't stop until the model sends an empty string
+    // - see https://github.com/ollama/ollama/issues/3759#issuecomment-2082226680
+    let model = ollama
+      .ChatTextGenerator({
+        model: "phi3",
+        stopSequences: ollama.prompt.Phi3.chat().stopSequences,
+      })
+      .withChatPrompt();
+
     const textStream = await streamText({
-      model: ollama
-        .CompletionTextGenerator({
-          model: "llama3",
-          promptTemplate: ollama.prompt.Llama3,
-          raw: true, // required when using custom prompt template
-        })
-        .withChatPrompt(),
+      model: model,
       prompt: chat,
     });
 

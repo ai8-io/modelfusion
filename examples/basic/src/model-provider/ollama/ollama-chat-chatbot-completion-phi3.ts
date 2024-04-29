@@ -20,8 +20,8 @@ async function main() {
     const textStream = await streamText({
       model: ollama
         .CompletionTextGenerator({
-          model: "llama3",
-          promptTemplate: ollama.prompt.Llama3,
+          model: "phi3",
+          promptTemplate: ollama.prompt.Phi3,
           raw: true, // required when using custom prompt template
         })
         .withChatPrompt(),

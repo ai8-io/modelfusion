@@ -5,6 +5,7 @@ import * as llama2Prompt from "../../model-function/generate-text/prompt-templat
 import * as llama3Prompt from "../../model-function/generate-text/prompt-template/Llama3PromptTemplate";
 import * as mistralPrompt from "../../model-function/generate-text/prompt-template/MistralInstructPromptTemplate";
 import * as neuralChatPrompt from "../../model-function/generate-text/prompt-template/NeuralChatPromptTemplate";
+import * as phi3ChatPrompt from "../../model-function/generate-text/prompt-template/Phi3PromptTemplate";
 import { TextGenerationPromptTemplateProvider } from "../../model-function/generate-text/prompt-template/PromptTemplateProvider";
 import * as synthiaPrompt from "../../model-function/generate-text/prompt-template/SynthiaPromptTemplate";
 import * as textPrompt from "../../model-function/generate-text/prompt-template/TextPromptTemplate";
@@ -77,6 +78,7 @@ export const Llama2 = asLlamaCppTextPromptTemplateProvider(llama2Prompt);
 export const Llama3 = asLlamaCppTextPromptTemplateProvider(llama3Prompt);
 export const NeuralChat =
   asLlamaCppTextPromptTemplateProvider(neuralChatPrompt);
+export const Phi3 = asLlamaCppTextPromptTemplateProvider(phi3ChatPrompt);
 export const Alpaca = asLlamaCppTextPromptTemplateProvider(alpacaPrompt);
 export const Synthia = asLlamaCppTextPromptTemplateProvider(synthiaPrompt);
 export const Vicuna = asLlamaCppTextPromptTemplateProvider(vicunaPrompt);
